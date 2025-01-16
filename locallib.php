@@ -23,14 +23,14 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
 /**
  * Get questions from the API.
  *
  * @param object $dataobject of the stored processing data from genai db table extended with example data.
  * @return object questions of generated questions
  */
-function qbank_genai_get_questions($dataobject) {
+use qbank_genai\ai;
+ function qbank_genai_get_questions($dataobject) {
 
     // Build primer.
     $primer = $dataobject->primer;
@@ -102,7 +102,7 @@ function qbank_genai_get_questions($dataobject) {
         'messages' =>  $messages,
     ]);
 
-    $ai = new \qbank_genai\ai();
+    $ai = new ai();
     $context = context_system::instance();
     $result = json_decode($ai->perform_request($data,'feedback',$context));
 

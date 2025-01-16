@@ -15,7 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace qbank_genai;
-use \moodle_exception;
 /**
  * Class ai
  *
@@ -28,6 +27,10 @@ use \moodle_exception;
  *
  */
 class ai {
+
+
+    public function __construct() {
+    }
 
     public function perform_request(string $prompt, string $purpose = 'feedback', $context): string {
         // If local_ai_manager is not installed. Use the stand alone mode.
